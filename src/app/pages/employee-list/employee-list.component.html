@@ -1,1 +1,31 @@
-<p>employee-list works!</p>
+<h2>Employee List</h2>
+
+<div *ngIf="loading">Loading employees...</div>
+<div *ngIf="error">Error loading employees</div>
+
+<table *ngIf="!loading && !error" border="1">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Designation</th>
+      <th>Department</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees">
+      <td>{{ emp.first_name }}</td>
+      <td>{{ emp.last_name }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.designation }}</td>
+      <td>{{ emp.department }}</td>
+      <td>
+        <button [routerLink]="['/employees/update', emp.id]">Update</button>
+        <button [routerLink]="['/employees/view', emp.id]">View</button>
+        <button (click)="deleteEmployee(emp.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

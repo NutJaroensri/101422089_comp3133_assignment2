@@ -1,1 +1,22 @@
-<p>employee-update works!</p>
+<h2>Update Employee</h2>
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+  <label>First Name: <input formControlName="first_name" /></label><br />
+  <label>Last Name: <input formControlName="last_name" /></label><br />
+  <label>Email: <input formControlName="email" /></label><br />
+  <label>Gender:
+    <select formControlName="gender">
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </label><br />
+  <label>Designation: <input formControlName="designation" /></label><br />
+  <label>Salary: <input type="number" formControlName="salary" /></label><br />
+  <label>Date of Joining: <input type="date" formControlName="date_of_joining" /></label><br />
+  <label>Department: <input formControlName="department" /></label><br />
+  <label>Photo URL: <input formControlName="employee_photo" /></label><br /><br />
+
+  <button type="submit" [disabled]="employeeForm.invalid">Update</button>
+</form>
